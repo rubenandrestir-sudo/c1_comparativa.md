@@ -144,10 +144,11 @@ Esta comparación demuestra que ambos servicios permiten acceder a información 
 
 Se presenta la evidencia de consulta del servicio FeatureServer, en la cual se identifican los registros geográficos correspondientes a las tres veredas.
 
-![Evidencia FeatureServer](Captura2.JPG)
+<img width="1360" height="690" alt="evidencia_featureserver" src="https://github.com/user-attachments/assets/3643d050-dfb7-4033-87a8-1f9f7feb5752" />
+
 
 ### 2. Consulta del servicio pygeoapi
 
 Se presenta la evidencia de consulta del servicio pygeoapi, donde se visualizan los resultados correspondientes a Lake Baikal, Lake Winnipeg y Great Slave Lake.
+![Uploading evidencia_pygeoapi.JPG…]()
 
-![Evidencia pygeoapi](cap1.JPG)
