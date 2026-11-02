@@ -67,14 +67,24 @@ La respuesta presenta una estructura FeatureCollection, que contiene los element
 
 Cada elemento incluye geometría, identificador y propiedades descriptivas.
 
-## 5. Tabla comparativa de servicios
+## 5. Tabla comparativa de estándares geográficos
 
-| Estándar o servicio | Qué entrega | Cómo se filtra | Cómo se pagina |
+| Estándar | Qué entrega | Cómo se filtra | Cómo se pagina |
 |---|---|---|---|
-| WMS | Imágenes cartográficas | BBOX, capas y estilos | No pagina entidades |
-| WFS | Geometrías y atributos vectoriales | Filtros espaciales y de atributos | startIndex y count, según versión |
-| FeatureServer | Entidades vectoriales mediante REST y JSON | where, geometry y outFields | resultOffset y resultRecordCount |
-| OGC API – Features | Entidades geográficas mediante REST y JSON | bbox, datetime y filtros compatibles | limit y enlaces de navegación |
+| WMS | Imágenes cartográficas renderizadas. | Mediante capas, extensión espacial BBOX, estilos y dimensiones como TIME. | No pagina entidades; permite controlar la extensión y dimensiones de la imagen. |
+| WFS | Entidades vectoriales con geometrías y atributos. | Mediante filtros espaciales, BBOX y filtros de atributos utilizando Filter Encoding. | Mediante count y startIndex en WFS 2.0, según las capacidades del servidor. |
+| FeatureServer (Esri) | Entidades vectoriales mediante REST, JSON y GeoJSON. | Mediante parámetros where, geometry, outFields y consultas espaciales. | Mediante resultRecordCount y resultOffset. |
+| OGC API – Features | Entidades geográficas mediante rutas REST y formatos como GeoJSON. | Mediante parámetros como bbox y datetime; filtros de atributos mediante extensiones compatibles. | Mediante limit y enlaces de navegación como next; offset puede estar disponible según la implementación. |
+
+### Análisis de la comparación
+
+WMS se orienta principalmente a la visualización de información geográfica mediante mapas renderizados, mientras que WFS permite consultar las entidades vectoriales y sus atributos.
+
+FeatureServer utiliza una arquitectura REST propia del ecosistema Esri, con parámetros específicos para realizar consultas y controlar la cantidad de registros obtenidos.
+
+OGC API – Features proporciona una estructura moderna basada en recursos y colecciones, facilitando la consulta de entidades geográficas mediante solicitudes HTTP y respuestas JSON.
+
+La principal diferencia entre los servicios tradicionales y los servicios REST está en la forma de realizar las solicitudes, organizar los recursos y entregar la información geográfica.
 
 ## 6. Comparación de las estructuras JSON
 
@@ -108,4 +118,24 @@ Se concluye que el conocimiento de estos estándares es fundamental para integra
 - Esri. FeatureServer – Veredas de Boyacá 2024.
 - pygeoapi. Demostración de OGC API – Features.
 - Open Geospatial Consortium (OGC). Estándares de servicios geográficos.
+## 4.1. Resultados obtenidos en la consulta pygeoapi
 
+La consulta realizada a la colección lakes de la plataforma pygeoapi permitió obtener tres elementos geográficos en formato GeoJSON.
+
+Los elementos identificados fueron Lake Baikal, Lake Winnipeg y Great Slave Lake, cuyos identificadores corresponden a 0, 1 y 2, respectivamente.
+
+La respuesta presentó una estructura FeatureCollection, con tres objetos de tipo Feature. Cada entidad contiene información descriptiva en properties y geometrías de tipo Polygon.
+
+Adicionalmente, se identificaron los campos numberMatched con un valor de 25 y numberReturned con un valor de 3, lo que indica que existen 25 elementos coincidentes en la colección y que la consulta devolvió únicamente tres.
+
+La respuesta también incluye un enlace de navegación identificado mediante rel=next, que permite consultar los siguientes registros utilizando el parámetro offset=3.
+
+## 4.2. Comparación de resultados
+
+La consulta realizada mediante FeatureServer permitió obtener tres entidades correspondientes a veredas de Boyacá, mientras que la consulta de pygeoapi devolvió tres elementos de la colección lakes.
+
+Ambos servicios presentan respuestas estructuradas mediante FeatureCollection y utilizan los componentes features, geometry y properties para representar la información geográfica.
+
+Sin embargo, existen diferencias en sus mecanismos de consulta y paginación. FeatureServer utiliza parámetros como resultRecordCount y resultOffset, mientras que OGC API – Features utiliza limit, offset y enlaces de navegación.
+
+Esta comparación demuestra que ambos servicios permiten acceder a información vectorial mediante solicitudes HTTP, aunque pertenecen a implementaciones tecnológicas diferentes.
