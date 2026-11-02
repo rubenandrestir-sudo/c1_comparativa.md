@@ -138,4 +138,16 @@ Ambos servicios presentan respuestas estructuradas mediante FeatureCollection y 
 
 Sin embargo, existen diferencias en sus mecanismos de consulta y paginación. FeatureServer utiliza parámetros como resultRecordCount y resultOffset, mientras que OGC API – Features utiliza limit, offset y enlaces de navegación.
 
-Esta comparación demuestra que ambos servicios permiten acceder a información vectorial mediante solicitudes HTTP, aunque pertenecen a implementaciones tecnológicas diferentes.
+Esta comparación demuestra que ambos servicios permiten acceder a información vectorial mediante solicitudes HTTP, aunque pertenecen a implementaciones tecnológicas diferentes.## Evidencias de consulta de servicios geográficos
+
+### 1. Consulta del servicio FeatureServer
+
+Se presenta la evidencia de consulta del servicio FeatureServer, en la cual se identifican los registros geográficos correspondientes a las tres veredas.
+
+![Evidencia FeatureServer](Captura2.JPG)
+
+### 2. Consulta del servicio pygeoapi
+
+Se presenta la evidencia de consulta del servicio pygeoapi, donde se visualizan los resultados correspondientes a Lake Baikal, Lake Winnipeg y Great Slave Lake.
+
+![Evidencia pygeoapi](cap1.JPG)
