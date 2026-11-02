@@ -152,3 +152,4 @@ Se presenta la evidencia de consulta del servicio FeatureServer, en la cual se i
 Se presenta la evidencia de consulta del servicio pygeoapi, donde se visualizan los resultados correspondientes a Lake Baikal, Lake Winnipeg y Great Slave Lake.
 ![Uploading evidencia_pygeoapi.JPG…]()
 
+
